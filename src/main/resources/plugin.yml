@@ -1,0 +1,33 @@
+name: FDailyRewards
+version: '${version}'
+main: com.fretka46.fDailyRewards.FDailyRewards
+api-version: '26.3'
+prefix: FDailyRewards
+authors: [ fretka46 ]
+description: Daily rewards plugin for TheCivia
+softdepend: [PlaceholderAPI]
+permissions:
+  fdailyrewards.reload:
+    default: op
+  fdailyrewards.admin.resetday:
+    default: op
+  fdailyrewards.admin.setday:
+    default: op
+  fdailyrewards.admin.giftday:
+    default: op
+  fdailyrewards.admin.giftnext:
+    default: op
+  fdailyrewards.admin.checkday:
+    default: op
+  fdailyrewards.admin.unlockmissed:
+    default: op
+  fdailyrewards.admin.setvip:
+    default: op
+  fdailyrewards.admin.givepass:
+    default: op
+  fdailyrewards.admin.removepass:
+    default: op
+  fdailyrewards.admin.passinfo:
+    default: op
+  fdailyrewards.admin.pending:
+    default: op

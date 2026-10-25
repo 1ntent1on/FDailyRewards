@@ -1,0 +1,157 @@
+# FDailyRewards – konfigurace denních odměn
+
+debug: false
+
+# Time after which it will be next day for rewards
+day_reset_time: "04:15"
+
+# Time interval in minutes to remind players about available reward claim
+reward_claim_available_interval: 30
+
+message_prefix: "<#383838>[<#ff002e><bold>Survival</bold><#383838>] <#ffc700><bold>»<reset><gray>"
+
+#reward_claim_available_message: "<click:run_command:'/daily'><hover:show_text:'<gray>Klikni pro použití příkazu <#ff002e>/daily<gray>.'>Login odměna je dostupná! Použij <#ff002e>/daily<gray> pro její vyzvednutí!</hover></click>"
+reward_claim_available_command: "cmi bossbarmsg %player_name% &f&lMáš dostupnou {#ff002e}&lDenní Odměnu&f&l! Vyzvednout si ji můžeš pomocí {#ff002e}&l/daily -c:yellow -n:daily -s:1 -t:-1"
+#reward_claim_available_command: "say test"
+reward_claim_available_loreline: "<white>从 - Vyzvednout odměnu\n<white> "
+reward_claim_available_tommorow_loreline: "<white>Odměnu si budeš moci \n<white>vyzvednout <#ff002e>zítra<white>. \n<white>"
+reward_claim_available_2_days_loreline: "<white>Odměnu si budeš moci \n<white>vyzvednout za <#ff002e>2 dny<white>. \n<white>"
+reward_vip_locked_loreline: "<white>Pro vyzvednutí této odměny musíš \n<white>vlastnit <#ff002e>Login Pass<white>!\n<white>"
+reward_vip_can_skip: "<white>Můžeš si vyzvednout tuto odměnu, \n<white>jelikož máš <#ff002e>Login Pass<white>!"
+reward_already_claimed: "Tuto odměnu už máš vyzvednutou."
+reward_vip_only: "<click:open_url:'https://obchod.thecivia.net/package/login-pass'><hover:show_text:'<gray>Klikni pro přesun do obchodu: <#ff002e>https://obchod.thecivia.net/package/login-pass<gray>.'>Tato odměna je pouze pro hráče s <#ff002e>Login Passem<gray>!</hover></click>"
+reward_not_yet_available: "Tato odměna ještě není dostupná."
+reward_previous_not_claimed: "Nejdřív si musíš vyzvednout předchozí odměny."
+reward_cannot_yet: "Tuto odměnu si ještě nemůžeš vyzvednout."
+reward_already_claimed_today: "Dnešní odměnu už máš vyzvednutou."
+
+fill_empty_slots: false
+menu_title: "󏿽󏿽󏿽󏿽󏿽󏿽󏿽󏿽󏿽󏿽󏿽󏿽񎵀󏿽󏿽󏿽󏿽<white>桂"
+non_functional_items:
+   "1":
+    inventorySlot: 49
+    item:
+      material: FLINT
+      customModelData: 357
+      tooltipStyle: "minecraft:thecivia/legendary"
+      name: "<#383838>[<#ff002e>Info<#383838>]"
+      commands:
+        - "cmi ctext obchod %player_name%"
+      lore:
+        - ""
+        - "<white>Zde si můžeš každý den "
+        - "<white>vyzvednout odměnu. "
+        - ""
+
+
+login_rewarded: "<#383838>[<#ff002e><bold>Survival</bold><#383838>] <#ffc700><bold>»<reset><gray> Premium odměna byla předána!"
+login_commands:
+#  - "cmi ctext tokeny-bonus %player_name%"
+  - "ecobits give  %player_name% token 10"
+  #- "cmi titlemsg %player_name% {#ff002e}&lPremium Pass \n &fObdrženo {#ff002e}10&f tokenů"
+  - "discordsrv broadcast #1369383306814033940 Hráč **%player_name%** právě obdržel **10 Tokenů** jako login bonus."
+  - "sendtitle %player_name% <#ff002e><bold>Premium Pass<reset>; &fObdrženo <#ff002e>10<white> tokenů; 0.5 3.5 0.5"
+
+
+
+reward_claimed_item:
+    material: FLINT
+    tooltipStyle: "minecraft:thecivia/common"
+    customModelData: 352
+    lore:
+        - ""
+        - "<white>Tuto odměnu už máš vyzvednutou. "
+        - ""
+
+reward_claim_available_item:
+    material: FLINT
+    tooltipStyle: "minecraft:thecivia/common"
+    customModelData: 351
+    lore:
+        - ""
+        - "<white>Klikni pro vyzvednutí odměny. "
+        - ""
+
+reward_claim_available_item_vip:
+    material: FLINT
+    tooltipStyle: "minecraft:thecivia/legendary"
+    customModelData: 354
+    lore:
+        - ""
+        - "<white>Klikni pro vyzvednutí odměny. "
+        - ""
+
+reward_claimed_item_vip:
+    material: FLINT
+    tooltipStyle: "minecraft:thecivia/legendary"
+    customModelData: 355
+    lore:
+        - ""
+        - "<white>Tuto odměnu už máš vyzvednutou. "
+        - ""
+
+
+# =====================================================================================================
+# Nové klíče ve verzi 1.1.0 (hodnoty výše zůstávají beze změny; chybějící klíč se bere z tohoto výchozího souboru)
+# =====================================================================================================
+
+# Časová zóna pro "den odměn" (reset v day_reset_time se počítá v ní, ne v zóně systému)
+timezone: "Europe/Prague"
+
+# Zapnutí připomínek "máš dostupnou odměnu" (příkaz reward_claim_available_command)
+show_reward_claim_available_message: true
+# Jak často smyčka kontroluje online hráče (sekundy). Interval mezi připomínkami je reward_claim_available_interval (minuty)
+reminder_tick_seconds: 10
+# První připomínka po připojení za tolik sekund
+reminder_join_delay_seconds: 8
+# Připomínka po resetu dne (např. 04:15) se rozloží náhodně do tolika sekund, ať nejde všem naráz
+reminder_rollover_jitter_seconds: 60
+
+# Přechodová podpora: kdo má tuto permission, bere se mu Login Pass jako aktivní (staré nákupy přes LuckPerms).
+# Po převedení držitelů na "fdailyrewards admin givepass" a úpravě Tebexu nastav na "" (vypnuto).
+legacy_pass_permission: "survival.premium.dailylogin"
+
+# Kdo koupí Login Pass v posledních N dnech měsíce (včetně dnešního) bez aktivního Passu, dostane místo toho další měsíc. 0 = vypnuto.
+pass_late_purchase_days: 0
+
+# Nejvíc dní, které odemkne jeden příkaz "admin unlockmissed"
+unlock_max_days: 31
+
+# Režim "admin giftnext" (nástroj pro AT na požádání hráče, ne Tebex balíček):
+#   catchup = dá jen zameškaný den (další den k vyzvednutí už kalendářně nastal), jinak odmítne
+#   any     = dá i den dopředu (hráč ho dostane dřív, ale za měsíc nezíská víc a zítra nemá co vyzvednout)
+giftnext_mode: catchup
+
+# Neúspěšné nákupní příkazy z konzole (givepass, setvip = Login Pass z Tebexu) se vždy zapíšou do failed-purchases.log.
+# Tebex nabije i při neúspěchu (např. Pass koupený pro jméno, které na serveru nikdy nehrálo), takže je potřeba
+# Pass zadat ručně správnému hráči, nebo platbu vrátit. Volitelně se spustí i tento příkaz z konzole
+# (např. "discordsrv broadcast #kanal Nákup {command} pro {player} selhal: {reason}"). Prázdné = vypnuto.
+failed_purchase_command: ""
+
+# Při hromadném předání (unlockmissed give víc dní, víc dárků z fronty po připojení) se příkazy odměn začínající
+# některým z těchto prefixů nespustí; hráč místo nich dostane jednu souhrnnou zprávu (unlock_done / gifts_received).
+# Předání jednoho dne (běžné vyzvednutí, giftnext, giftday) běží beze změny.
+bulk_skip_command_prefixes:
+  - "discordsrv broadcast"
+  - "cmi ctext"
+  - "cmi bossbarmsg"
+
+# Jak dlouho (ms) se drží vyhodnocený stav hráče pro PlaceholderAPI (menu volá placeholdery velmi často)
+placeholder_cache_millis: 5000
+
+# Texty placeholderů %fdr_...% (klíče nejsou "yes"/"no", YAML by je přečetl jako true/false)
+placeholders:
+  yes_text: "yes"
+  no_text: "no"
+  dash: "–"
+  less_than_minute: "méně než minuta"
+
+# Zvuky (prázdné = bez zvuku)
+sound_denied: "thecivia:thecivia.sound.27"
+sound_claimed: "thecivia:thecivia.sound.34"
+
+# Zprávy (prefix se přidá automaticky). {day} / {count} se nahradí.
+non_functional_vip_only: "Tato položka je pouze pro hráče s <#ff002e>Login Passem<gray>!"
+gift_received: "Byla ti věnována odměna za den <#ff002e>{day}<gray>!"
+unlock_done: "Odemčeno dní: <#ff002e>{count}<gray>."
+gifts_received: "Byly ti doručeny odměny za dny <#ff002e>{days}<gray>!"
